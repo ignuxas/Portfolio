@@ -1,24 +1,26 @@
 'use client';
 
+import logo from "../public/signature.png";
 import React from 'react';
 
 export default function Hero() {
   return (
-    <main className="relative z-10 flex min-h-screen w-full max-w-6xl flex-col items-center justify-center px-8 pb-12">
+    <main className="relative z-10 flex w-full max-w-6xl flex-col items-center justify-center px-8 pb-12">
       {/* New Background Badge */}
       <div className="mb-12 flex items-center gap-2 rounded-full border border-zinc-700 bg-black/50 backdrop-blur-sm px-6 py-2.5">
         <div className="flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-white">
-            <path d="M2 2L14 14M2 14L14 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-          <span className="text-sm font-medium text-white">New Background</span>
+            <img src={logo.src} alt="Ignas Mikolaitis" className="h-6 w-6 rounded-full" />
+          <span className="text-sm font-medium text-white">Ignas Mikolaitis</span>
         </div>
       </div>
 
       {/* Hero Title */}
-      <h1 className="mb-12 max-w-5xl text-center text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl lg:text-8xl">
-        The web, made fluid at your fingertips.
+      <h1 className="max-w-5xl text-center text-5xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-6xl">
+        I code sometimes
       </h1>
+      <h3 className="mb-12 max-w-3xl text-center text-lg font-medium leading-relaxed text-zinc-300 md:text-xl">
+        ¯\_(ツ)_/¯
+      </h3>
 
       {/* CTA Buttons */}
       <div className="flex flex-col gap-4 sm:flex-row">

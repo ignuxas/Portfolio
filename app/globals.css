@@ -139,3 +139,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Shine animation for ShinyText */
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.animate-shine {
+  animation: shine 5s linear infinite;
+}
+
+/* Experience Section Styles */
+.aBlue {
+  @apply text-blue-400 hover:text-blue-300 transition-colors underline;
+}
