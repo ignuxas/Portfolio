@@ -3,7 +3,9 @@
 import Navigation from '@/components/Navigation';
 import Background from '@/components/Background';
 import Hero from '@/components/Hero';
+import About from '@/components/About';
 import Experience from '@/components/Experience';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -18,10 +20,19 @@ export default function Home() {
         
         {/* Hero Content */}
         <Hero />
+        
+        {/* Fade to black gradient overlay at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black pointer-events-none z-20" />
       </div>
+
+      {/* About Section */}
+      <About />
 
       {/* Experience Section - separate from Hero */}
       <Experience />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
