@@ -242,24 +242,32 @@ const CardNav: React.FC<CardNavProps> = ({
 
           {/* Logo and tagline wrapper - moves as one unit */}
           <div 
-            className="logo-tagline-wrapper hidden md:flex items-center gap-6 absolute transition-all duration-700 ease-in-out"
+            className={`logo-tagline-wrapper hidden md:flex items-center absolute transition-all duration-700 ease-in-out ${
+              isScrolled ? 'left-1/2 -translate-x-1/2' : 'left-1/2 -translate-x-1/2 2xl:left-[23%] 2xl:translate-x-0'
+            }`}
             style={{
-              left: isScrolled ? '50%' : '20%',
               top: '50%',
-              transform: isScrolled ? 'translate(-50%, -50%)' : 'translate(0, -50%)'
+              transform: 'translateY(-50%)'
             }}
           >
             {/* Logo section */}
-            <div className="flex items-center">
+            <div className="flex items-center shrink-0">
               <img src={logo} alt={logoAlt} className="logo h-12" />
               {logoText && (
-                <span className="logo-text ml-4 text-white font-medium text-lg whitespace-nowrap">{logoText}</span>
+                <span className="logo-text ml-4 text-white font-semibold text-lg whitespace-nowrap tracking-tight">{logoText}</span>
               )}
             </div>
 
+            {/* Divider - only visible when not scrolled */}
+            <div 
+              className={`h-6 mx-4 w-[1px] bg-white/20 transition-all duration-700 ease-in-out hidden 2xl:block ${
+                isScrolled ? 'opacity-0 w-0' : 'opacity-100 mx-2'
+              }`}
+            />
+
             {/* Animated tagline - only visible when not scrolled */}
             <div 
-              className={`tagline-container transition-all duration-700 pt-[1px] ease-in-out flex items-center ${
+              className={`tagline-container pt-[1px] transition-all duration-700 ease-in-out items-center hidden 2xl:flex ${
                 isScrolled ? 'opacity-0 max-w-0 overflow-hidden' : 'opacity-100 max-w-[1000px]'
               }`}
             >
@@ -267,7 +275,7 @@ const CardNav: React.FC<CardNavProps> = ({
                 <SplitText
                   key="tagline-animation"
                   text="Full Stack Developer / Software Engineer, Co-founder @ Thunderclap Labs"
-                  className="text-sm lg:text-base text-white/90 font-light whitespace-nowrap"
+                  className="text-sm text-white/80 font-normal whitespace-nowrap tracking-wide"
                   delay={50}
                   duration={0.4}
                   ease="power3.out"
