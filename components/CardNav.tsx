@@ -1,7 +1,9 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { Button } from '@heroui/react';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from 'react-icons/go';
+import SplitText from './SplitText';
 
 type CardNavLink = {
   label: string;
@@ -43,6 +45,8 @@ const CardNav: React.FC<CardNavProps> = ({
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -113,6 +117,50 @@ const CardNav: React.FC<CardNavProps> = ({
   }, [ease, items]);
 
   useLayoutEffect(() => {
+    // Add scroll listener
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 50;
+      setIsScrolled(scrolled);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    // Detect when HeroUI modal is open by checking for modal overlay in DOM
+    const checkModalState = () => {
+      // HeroUI modals create a backdrop element with data-slot="backdrop"
+      const modalBackdrop = document.querySelector('[data-slot="backdrop"]');
+      const modalOverlay = document.querySelector('[role="dialog"]');
+      const isOpen = !!(modalBackdrop || modalOverlay);
+      setIsModalOpen(isOpen);
+    };
+
+    // Initial check
+    checkModalState();
+
+    // Create observer to watch for DOM changes
+    const observer = new MutationObserver(checkModalState);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['data-slot', 'role']
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
     const handleResize = () => {
       if (!tlRef.current) return;
 
@@ -159,7 +207,13 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[999] top-[1.2em] md:top-[2em] ${className}`}
+      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] z-[999] top-[1.2em] md:top-[2em] ${
+        isModalOpen 
+          ? '-translate-y-[200px] opacity-0 max-w-[800px] transition-all duration-300 ease-in' 
+          : isScrolled 
+            ? 'max-w-[800px] translate-y-0 opacity-100 transition-all duration-500 ease-out' 
+            : 'max-w-7xl translate-y-0 opacity-100 transition-all duration-500 ease-out'
+      } ${className}`}
     >
       <nav
         ref={navRef}
@@ -186,20 +240,68 @@ const CardNav: React.FC<CardNavProps> = ({
             />
           </div>
 
-          <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-0">
+          {/* Logo and tagline wrapper - moves as one unit */}
+          <div 
+            className="logo-tagline-wrapper hidden md:flex items-center gap-6 absolute transition-all duration-700 ease-in-out"
+            style={{
+              left: isScrolled ? '50%' : '20%',
+              top: '50%',
+              transform: isScrolled ? 'translate(-50%, -50%)' : 'translate(0, -50%)'
+            }}
+          >
+            {/* Logo section */}
+            <div className="flex items-center">
+              <img src={logo} alt={logoAlt} className="logo h-12" />
+              {logoText && (
+                <span className="logo-text ml-4 text-white font-medium text-lg whitespace-nowrap">{logoText}</span>
+              )}
+            </div>
+
+            {/* Animated tagline - only visible when not scrolled */}
+            <div 
+              className={`tagline-container transition-all duration-700 pt-[1px] ease-in-out flex items-center ${
+                isScrolled ? 'opacity-0 max-w-0 overflow-hidden' : 'opacity-100 max-w-[1000px]'
+              }`}
+            >
+              {!isScrolled && (
+                <SplitText
+                  key="tagline-animation"
+                  text="Full Stack Developer / Software Engineer, Co-founder @ Thunderclap Labs"
+                  className="text-sm lg:text-base text-white/90 font-light whitespace-nowrap"
+                  delay={50}
+                  duration={0.4}
+                  ease="power3.out"
+                  splitType="words"
+                  from={{ opacity: 0, y: 20 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="0px"
+                  textAlign="left"
+                  tag="span"
+                />
+              )}
+            </div>
+          </div>
+
+          {/* Mobile logo (original) */}
+          <div className="logo-container flex md:hidden items-center order-1">
             <img src={logo} alt={logoAlt} className="logo h-12" />
             {logoText && (
               <span className="logo-text ml-4 text-white font-medium text-lg">{logoText}</span>
             )}
           </div>
 
-          <button
-            type="button"
-            className="card-nav-cta-button hidden md:inline-flex justify-center items-center border-0 rounded-[calc(0.75rem-0.2rem)] px-4 h-full font-medium cursor-pointer transition-colors duration-300"
-            style={{ backgroundColor: buttonBgColor, color: buttonTextColor } as React.CSSProperties}
+          <Button
+            as="a"
+            href="https://drive.google.com/file/d/1jdC_hAlqNQdDPhXeHOkQ5jZ1YEtEcEi6/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="md"
+            radius="lg"
+            className="hidden md:inline-flex bg-transparent border-[1px] border-white/20 text-white font-medium backdrop-blur-sm hover:bg-white/10 hover:border-white/60 transition-all duration-300"
           >
-            Get Started
-          </button>
+            Resume
+          </Button>
         </div>
 
         <div

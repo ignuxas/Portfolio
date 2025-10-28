@@ -5,6 +5,8 @@ import Background from '@/components/Background';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Experience from '@/components/Experience';
+import Achievements from '@/components/Achievements';
+import FeaturedProjects from '@/components/FeaturedProjects';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -22,7 +24,7 @@ export default function Home() {
         <Hero />
         
         {/* Fade to black gradient overlay at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black pointer-events-none z-20" />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-b from-transparent to-black pointer-events-none z-20" />
       </div>
 
       {/* About Section */}
@@ -30,6 +32,12 @@ export default function Home() {
 
       {/* Experience Section - separate from Hero */}
       <Experience />
+
+      {/* Featured Projects Section */}
+      <FeaturedProjects />
+      
+      {/* Achievements Section */}
+      <Achievements />
 
       {/* Footer */}
       <Footer />

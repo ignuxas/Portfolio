@@ -17,6 +17,15 @@ export default function Navigation() {
       ]
     },
     {
+      label: "Experience",
+      bgColor: "#0D1520",
+      textColor: "#fff",
+      links: [
+        { label: "Work History", href: "#work-history", ariaLabel: "Work History" },
+        { label: "Achievements", href: "#achievements", ariaLabel: "Achievements" }
+      ]
+    },
+    {
       label: "Projects", 
       bgColor: "#170D27",
       textColor: "#fff",

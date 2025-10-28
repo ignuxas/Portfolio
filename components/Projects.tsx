@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { projects, Project } from '@/lib/projectsData';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Chip, useDisclosure } from '@heroui/react';
 import { FaGithub, FaYoutube, FaExternalLinkAlt, FaGoogleDrive, FaDownload } from 'react-icons/fa';
+import ShinyText from './ShinyText';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -22,50 +23,84 @@ export default function Projects() {
   };
 
   return (
-    <section className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+      <div className="mb-12">
         {/* Section Header */}
-        <div className="mb-16 text-center">
-          <p className="text-emerald-400 text-sm font-medium mb-2 tracking-wider">✦ MY WORK</p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Selected Projects</h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-5 h-5 text-emerald-500">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-full"
+              >
+                <path
+                  d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M3.27002 6.96L12 12.01L20.73 6.96"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12 22.08V12"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <ShinyText text="MY WORK" speed={3} className="text-xs tracking-wider" />
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Selected Projects</h2>
+          <p className="text-gray-400 text-lg max-w-2xl">
             Here&apos;s a curated selection showcasing my expertise and the achieved results.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Projects Masonry Layout */}
+        <div className="columns-1 md:columns-2 gap-12">
           {projects.map((project, index) => (
-            <div key={index} className="group cursor-pointer">
+            <div 
+              key={index} 
+              className="cursor-pointer break-inside-avoid mb-12 group" 
+              onClick={() => handleProjectClick(project)}
+            >
               {/* Project Image */}
-              <div
-                onClick={() => handleProjectClick(project)}
-                className="relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-900 mb-4"
-              >
+              <div className="relative rounded-2xl overflow-hidden bg-linear-to-br from-gray-900 to-gray-950 mb-4 w-full transition-transform duration-300 group-hover:scale-[1.02]">
                 {project.image && typeof project.image !== 'string' ? (
                   <Image
                     src={project.image}
                     alt={project.title}
-                    fill
-                    className="object-cover"
+                    className="w-full h-auto object-contain"
                   />
                 ) : project.image ? (
                   <Image
                     src={project.image as string}
                     alt={project.title}
-                    fill
-                    className="object-cover"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-full aspect-4/3 flex items-center justify-center">
                     <span className="text-gray-600 text-4xl">{project.title.charAt(0)}</span>
                   </div>
                 )}
               </div>
 
               {/* Project Info - Outside the card */}
-              <div className="px-1">
-                <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">{project.title}</h3>
                 {project.subTitle && (
                   <p className="text-gray-400 text-sm">{project.subTitle}</p>
                 )}
@@ -105,20 +140,24 @@ export default function Projects() {
                 <div className="space-y-6">
                   {/* Project Image */}
                   {selectedProject?.image && (
-                    <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#0d0d0d]">
+                    <div className="relative w-full rounded-xl overflow-hidden bg-[#0d0d0d]">
                       {typeof selectedProject.image !== 'string' ? (
                         <Image
                           src={selectedProject.image}
                           alt={selectedProject.title}
-                          fill
-                          className="object-cover"
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          className="w-full h-auto"
                         />
                       ) : selectedProject.image ? (
                         <Image
                           src={selectedProject.image as string}
                           alt={selectedProject.title}
-                          fill
-                          className="object-cover"
+                          width={0}
+                          height={0}
+                          sizes="100vw"
+                          className="w-full h-auto"
                         />
                       ) : null}
                     </div>

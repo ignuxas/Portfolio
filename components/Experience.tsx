@@ -13,7 +13,7 @@ const formatDate = (dateStr: string) => {
 
 const Experience: React.FC = () => {
   return (
-    <section className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+    <section id="work-history" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
       <div className="mb-12 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
         {/* Left side - Title and Description */}
         <div className="lg:max-w-md lg:sticky lg:top-24">
@@ -121,7 +121,7 @@ const Experience: React.FC = () => {
                           key={achievementIndex}
                           className="text-gray-400 text-sm leading-relaxed flex gap-2"
                         >
-                          <span className="text-gray-600 mt-1.5 shrink-0">•</span>
+                          <span className="text-gray-600 shrink-0">•</span>
                           <span dangerouslySetInnerHTML={{ __html: achievement }} />
                         </li>
                       ))}
