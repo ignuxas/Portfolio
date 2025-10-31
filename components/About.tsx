@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ShinyText from './ShinyText';
+import SplitText from './SplitText';
 
 const About: React.FC = () => {
   const skills = [
@@ -14,10 +15,10 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32">
+    <section id="about" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32">
       <div className="grid lg:grid-cols-2 gap-16 items-start">
         {/* Left Column - About Me */}
-        <div>
+        <div data-aos="fade-right">
           {/* Section Header */}
           <div className="flex items-center gap-3 mb-8">
             <div className="w-5 h-5 text-cyan-500">
@@ -46,16 +47,26 @@ const About: React.FC = () => {
             <ShinyText text="ABOUT ME" speed={3} className="text-xs tracking-wider" />
           </div>
 
-          <h2 className="text-4xl font-bold text-white mb-6">Hi there! I'm Ignas</h2>
+          <SplitText 
+            text="Hi there! I'm Ignas" 
+            tag="h2" 
+            className="text-4xl font-bold text-white mb-6"
+            textAlign="left"
+            splitType="chars"
+            delay={20}
+            duration={0.4}
+            threshold={0.1}
+            rootMargin="0px"
+          />
           
           <div className="space-y-4 text-gray-400 leading-relaxed">
-            <p>
+            <p data-aos="fade-up" data-aos-delay="100">
               I'm a self-taught software engineer based in <span className="text-cyan-500">Kaunas, Lithuania</span>, 
               currently studying Computer Science & Cyber Security Engineering @ KTU. I've had a thing for tech 
               since I was young, and since then I have taught myself to code in various programming languages.
             </p>
 
-            <p>
+            <p data-aos="fade-up" data-aos-delay="200">
               I've had the pleasure of working on some noteworthy projects, including{' '}
               <span className="text-white font-medium">Fuel Map</span> which is a gas station map providing 
               real-time prices. There's also <span className="text-white font-medium">Project Green</span>, an 
@@ -65,7 +76,7 @@ const About: React.FC = () => {
               <span className="text-cyan-500 font-medium">Google Bug Bounty Honorable Mentions List</span>.
             </p>
 
-            <p>
+            <p data-aos="fade-up" data-aos-delay="300">
               When I'm not coding, you'll find me building robots, working on cool projects, and soaking up new 
               knowledge. I'm excited to bring my skills and enthusiasm to projects that challenge the norm and 
               keep tech moving forward.
@@ -76,7 +87,7 @@ const About: React.FC = () => {
         {/* Right Column - Skills */}
         <div className="space-y-8 flex flex-col items-center justify-center h-full">
           {/* My Skills */}
-          <div>
+          <div data-aos="fade-left" data-aos-delay="100">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-5 h-5 text-purple-500">
                 <svg
@@ -115,6 +126,8 @@ const About: React.FC = () => {
                 <span
                   key={index}
                   className="px-4 py-2 bg-gray-900/50 border border-gray-800 rounded-lg text-gray-300 text-sm font-medium hover:border-cyan-500/50 hover:text-cyan-500 transition-all duration-300"
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 50}
                 >
                   {skill}
                 </span>
@@ -123,7 +136,7 @@ const About: React.FC = () => {
           </div>
 
           {/* Know-Hows */}
-          <div>
+          <div data-aos="fade-left" data-aos-delay="300">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-5 h-5 text-purple-500">
                 <svg
@@ -155,6 +168,8 @@ const About: React.FC = () => {
                 <span
                   key={index}
                   className="px-4 py-2 bg-gray-900/50 border border-gray-800 rounded-lg text-gray-300 text-sm font-medium hover:border-purple-500/50 hover:text-purple-500 transition-all duration-300"
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 50}
                 >
                   {knowHow}
                 </span>

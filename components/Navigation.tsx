@@ -8,40 +8,35 @@ import type { CardNavItem } from '@/components/CardNav';
 export default function Navigation() {
   const navItems: CardNavItem[] = [
     {
-      label: "About",
+      label: "Page",
       bgColor: "#0D0716",
       textColor: "#fff",
       links: [
-        { label: "Company", href: "#company", ariaLabel: "About Company" },
-        { label: "Careers", href: "#careers", ariaLabel: "About Careers" }
+        { label: "Projects", href: "#projects", ariaLabel: "View Projects" },
+        { label: "About", href: "#about", ariaLabel: "About Me" },
+        { label: "Experience", href: "#experience", ariaLabel: "My Experience" },
+        { label: "Achievements", href: "#achievements", ariaLabel: "My Achievements" }
       ]
     },
     {
-      label: "Experience",
+      label: "Thunderclap Labs",
       bgColor: "#0D1520",
       textColor: "#fff",
       links: [
-        { label: "Work History", href: "#work-history", ariaLabel: "Work History" },
-        { label: "Achievements", href: "#achievements", ariaLabel: "Achievements" }
+        { label: "Website", href: "https://thunderclaplabs.com/", ariaLabel: "Thunderclap Labs Website" },
+        { label: "YouTube", href: "https://www.youtube.com/@thunderclaplabs", ariaLabel: "Thunderclap Labs YouTube" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/company/thunderclap-labs/", ariaLabel: "Thunderclap Labs LinkedIn" }
       ]
     },
     {
-      label: "Projects", 
+      label: "My Socials", 
       bgColor: "#170D27",
       textColor: "#fff",
       links: [
-        { label: "Featured", href: "#featured", ariaLabel: "Featured Projects" },
-        { label: "Case Studies", href: "#case-studies", ariaLabel: "Project Case Studies" }
-      ]
-    },
-    {
-      label: "Contact",
-      bgColor: "#271E37", 
-      textColor: "#fff",
-      links: [
-        { label: "Email", href: "#email", ariaLabel: "Email us" },
-        { label: "Twitter", href: "#twitter", ariaLabel: "Twitter" },
-        { label: "LinkedIn", href: "#linkedin", ariaLabel: "LinkedIn" }
+        { label: "YouTube", href: "https://www.youtube.com/@thunderclaplabs", ariaLabel: "My YouTube Channel" },
+        { label: "Email", href: "mailto:mikolaitis.ignas@gmail.com", ariaLabel: "Email Me" },
+        { label: "GitHub", href: "https://github.com/ignuxas", ariaLabel: "My GitHub" },
+        { label: "Facebook", href: "https://www.facebook.com/ignuxas/", ariaLabel: "My Facebook" }
       ]
     }
   ];

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ShinyText from './ShinyText';
+import SplitText from './SplitText';
 import { Accordion, AccordionItem } from '@heroui/react';
 import { achievements, type AchievementItem } from '@/lib/achievementsData';
 
@@ -10,7 +11,7 @@ const Achievements: React.FC = () => {
     <section id="achievements" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
       <div className="mb-12 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
         {/* Left side - Title and Description */}
-        <div className="lg:max-w-md lg:sticky lg:top-24">
+        <div className="lg:max-w-md lg:sticky lg:top-24" data-aos="fade-right">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-5 h-5 text-purple-500">
               <svg
@@ -30,7 +31,17 @@ const Achievements: React.FC = () => {
             </div>
             <ShinyText text="ACHIEVEMENTS" speed={3} className="text-xs tracking-wider" />
           </div>
-          <h2 className="text-5xl font-bold text-white mb-4">Awards</h2>
+          <SplitText 
+            text="Awards" 
+            tag="h2" 
+            className="text-5xl font-bold text-white mb-4"
+            textAlign="left"
+            splitType="chars"
+            delay={20}
+            duration={0.4}
+            threshold={0.1}
+            rootMargin="0px"
+          />
           <p className="text-gray-400 text-lg">
             From winning hackathons to building innovative aerospace systems, here are some of the
             notable achievements I've worked on with Thunderclap Labs and beyond.
@@ -38,7 +49,7 @@ const Achievements: React.FC = () => {
         </div>
 
         {/* Right side - Achievement Cards */}
-        <div className="flex-1 lg:max-w-2xl">
+        <div className="flex-1 lg:max-w-2xl" id="achievement-cards">
           <Accordion
             variant="light"
             className="px-0 gap-0"
@@ -54,6 +65,10 @@ const Achievements: React.FC = () => {
               <AccordionItem
                 key={index}
                 aria-label={item.title}
+                className="aos-item"
+                data-aos="fade-left" 
+                data-aos-anchor="#achievement-cards"
+                data-aos-delay={index * 100}
                 title={
                   <div className="flex items-center justify-between gap-4 w-full">
                     {/* Left: Icon + Title & Category */}

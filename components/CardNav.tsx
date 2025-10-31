@@ -51,6 +51,14 @@ const CardNav: React.FC<CardNavProps> = ({
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
 
+  const handleLinkClick = () => {
+    const tl = tlRef.current;
+    if (!tl) return;
+    setIsHamburgerOpen(false);
+    tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
+    tl.reverse();
+  };
+
   const calculateHeight = () => {
     const navEl = navRef.current;
     if (!navEl) return 260;
@@ -117,9 +125,10 @@ const CardNav: React.FC<CardNavProps> = ({
   }, [ease, items]);
 
   useLayoutEffect(() => {
-    // Add scroll listener
+    // Add scroll listener for border styling
     const handleScroll = () => {
-      const scrolled = window.scrollY > 50;
+      const currentScrollY = window.scrollY;
+      const scrolled = currentScrollY > 50;
       setIsScrolled(scrolled);
     };
 
@@ -207,17 +216,17 @@ const CardNav: React.FC<CardNavProps> = ({
 
   return (
     <div
-      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] z-[999] top-[1.2em] md:top-[2em] ${
+      className={`card-nav-container fixed left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[999] transition-all top-[1.2em] md:top-[2em] ${
         isModalOpen 
-          ? '-translate-y-[200px] opacity-0 max-w-[800px] transition-all duration-300 ease-in' 
-          : isScrolled 
-            ? 'max-w-[800px] translate-y-0 opacity-100 transition-all duration-500 ease-out' 
-            : 'max-w-7xl translate-y-0 opacity-100 transition-all duration-500 ease-out'
+          ? '-translate-y-[200px] opacity-0 duration-300 ease-in' 
+          : 'translate-y-0 opacity-100 duration-500 ease-out'
       } ${className}`}
     >
       <nav
         ref={navRef}
-        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height] backdrop-blur-lg bg-[rgba(0,0,0,0.5)] border-[1px] border-[rgba(0,0,0,0.6)]`}
+        className={`card-nav ${isExpanded ? 'open' : ''} block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height] backdrop-blur-lg bg-[rgba(0,0,0,0.5)] border-[1px] transition-colors duration-500 ${
+          isScrolled ? 'border-[rgba(255,255,255,0.15)]' : 'border-[rgba(0,0,0,0.6)]'
+        }`}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-2">
           <div
@@ -240,64 +249,35 @@ const CardNav: React.FC<CardNavProps> = ({
             />
           </div>
 
-          {/* Logo and tagline wrapper - moves as one unit */}
-          <div 
-            className={`logo-tagline-wrapper hidden md:flex items-center absolute transition-all duration-700 ease-in-out ${
-              isScrolled ? 'left-1/2 -translate-x-1/2' : 'left-1/2 -translate-x-1/2 2xl:left-[23%] 2xl:translate-x-0'
-            }`}
-            style={{
-              top: '50%',
-              transform: 'translateY(-50%)'
+          {/* Logo - always centered */}
+          <a 
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
+            className="logo-wrapper hidden md:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:opacity-80"
           >
-            {/* Logo section */}
-            <div className="flex items-center shrink-0">
-              <img src={logo} alt={logoAlt} className="logo h-12" />
-              {logoText && (
-                <span className="logo-text ml-4 text-white font-semibold text-lg whitespace-nowrap tracking-tight">{logoText}</span>
-              )}
-            </div>
-
-            {/* Divider - only visible when not scrolled */}
-            <div 
-              className={`h-6 mx-4 w-[1px] bg-white/20 transition-all duration-700 ease-in-out hidden 2xl:block ${
-                isScrolled ? 'opacity-0 w-0' : 'opacity-100 mx-2'
-              }`}
-            />
-
-            {/* Animated tagline - only visible when not scrolled */}
-            <div 
-              className={`tagline-container pt-[1px] transition-all duration-700 ease-in-out items-center hidden 2xl:flex ${
-                isScrolled ? 'opacity-0 max-w-0 overflow-hidden' : 'opacity-100 max-w-[1000px]'
-              }`}
-            >
-              {!isScrolled && (
-                <SplitText
-                  key="tagline-animation"
-                  text="Full Stack Developer / Software Engineer, Co-founder @ Thunderclap Labs"
-                  className="text-sm text-white/80 font-normal whitespace-nowrap tracking-wide"
-                  delay={50}
-                  duration={0.4}
-                  ease="power3.out"
-                  splitType="words"
-                  from={{ opacity: 0, y: 20 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="0px"
-                  textAlign="left"
-                  tag="span"
-                />
-              )}
-            </div>
-          </div>
+            <img src={logo} alt={logoAlt} className="logo h-12" />
+            {logoText && (
+              <span className="logo-text ml-4 text-white font-semibold text-lg whitespace-nowrap tracking-tight">{logoText}</span>
+            )}
+          </a>
 
           {/* Mobile logo (original) */}
-          <div className="logo-container flex md:hidden items-center order-1">
+          <a 
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="logo-container flex md:hidden items-center order-1 cursor-pointer hover:opacity-80"
+          >
             <img src={logo} alt={logoAlt} className="logo h-12" />
             {logoText && (
               <span className="logo-text ml-4 text-white font-medium text-lg">{logoText}</span>
             )}
-          </div>
+          </a>
 
           <Button
             as="a"
@@ -334,6 +314,7 @@ const CardNav: React.FC<CardNavProps> = ({
                     className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
                     href={lnk.href}
                     aria-label={lnk.ariaLabel}
+                    onClick={handleLinkClick}
                   >
                     <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />
                     {lnk.label}

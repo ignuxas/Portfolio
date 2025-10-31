@@ -138,6 +138,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -160,4 +163,105 @@
 /* Experience Section Styles */
 .aBlue {
   @apply text-blue-400 hover:text-blue-300 transition-colors underline;
+}
+
+/* Multi-button hover effect for project cards */
+.card:hover .multi-button,
+.card .multi-button:focus-within {
+  width: 10rem;
+  height: 10rem;
+}
+
+/* Positioning for different numbers of links */
+.card .multi-button a:first-child:nth-last-child(1) {
+  left: 25%;
+  top: 25%;
+}
+
+.card .multi-button a:first-child:nth-last-child(2):nth-child(1),
+.card .multi-button a:first-child:nth-last-child(2) ~ *:nth-child(1) {
+  left: 37.5%;
+  top: 18.75%;
+}
+
+.card .multi-button a:first-child:nth-last-child(2):nth-child(2),
+.card .multi-button a:first-child:nth-last-child(2) ~ *:nth-child(2) {
+  left: 18.75%;
+  top: 37.5%;
+}
+
+.card .multi-button a:first-child:nth-last-child(3):nth-child(1),
+.card .multi-button a:first-child:nth-last-child(3) ~ *:nth-child(1) {
+  left: 50%;
+  top: 15.625%;
+}
+
+.card .multi-button a:first-child:nth-last-child(3):nth-child(2),
+.card .multi-button a:first-child:nth-last-child(3) ~ *:nth-child(2) {
+  left: 25%;
+  top: 25%;
+}
+
+.card .multi-button a:first-child:nth-last-child(3):nth-child(3),
+.card .multi-button a:first-child:nth-last-child(3) ~ *:nth-child(3) {
+  left: 15.625%;
+  top: 50%;
+}
+
+.card .multi-button a:first-child:nth-last-child(4):nth-child(1),
+.card .multi-button a:first-child:nth-last-child(4) ~ *:nth-child(1) {
+  left: 62.5%;
+  top: 18.75%;
+}
+
+.card .multi-button a:first-child:nth-last-child(4):nth-child(2),
+.card .multi-button a:first-child:nth-last-child(4) ~ *:nth-child(2) {
+  left: 37.5%;
+  top: 18.75%;
+}
+
+.card .multi-button a:first-child:nth-last-child(4):nth-child(3),
+.card .multi-button a:first-child:nth-last-child(4) ~ *:nth-child(3) {
+  left: 18.75%;
+  top: 37.5%;
+}
+
+.card .multi-button a:first-child:nth-last-child(4):nth-child(4),
+.card .multi-button a:first-child:nth-last-child(4) ~ *:nth-child(4) {
+  left: 18.75%;
+  top: 62.5%;
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+  .card .multi-button a {
+    position: relative !important;
+    left: 0 !important;
+    top: 20% !important;
+  }
+  
+  .card .multi-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    left: 55% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+/* Project card fade-in animation */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card-animate {
+  animation: fadeSlideIn 0.5s ease-out both;
 }

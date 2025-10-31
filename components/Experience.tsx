@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ShinyText from './ShinyText';
+import SplitText from './SplitText';
 import { Accordion, AccordionItem } from '@heroui/react';
 import { experience, type ExperienceItem } from '@/lib/experienceData';
 
@@ -13,10 +14,10 @@ const formatDate = (dateStr: string) => {
 
 const Experience: React.FC = () => {
   return (
-    <section id="work-history" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+    <section id="experience" className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
       <div className="mb-12 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
         {/* Left side - Title and Description */}
-        <div className="lg:max-w-md lg:sticky lg:top-24">
+        <div className="lg:max-w-md lg:sticky lg:top-24" data-aos="fade-right">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-5 h-5 text-purple-500">
               <svg
@@ -50,7 +51,17 @@ const Experience: React.FC = () => {
             </div>
             <ShinyText text="WORK HISTORY" speed={3} className="text-xs tracking-wider" />
           </div>
-          <h2 className="text-5xl font-bold text-white mb-4">Experience</h2>
+          <SplitText 
+            text="Experience" 
+            tag="h2" 
+            className="text-5xl font-bold text-white mb-4"
+            textAlign="left"
+            splitType="chars"
+            delay={20}
+            duration={0.4}
+            threshold={0.1}
+            rootMargin="0px"
+          />
           <p className="text-gray-400 text-lg">
             I have worked with some of the most innovative industry leaders to help build their
             top-notch products.
@@ -58,7 +69,7 @@ const Experience: React.FC = () => {
         </div>
 
         {/* Right side - Experience Cards */}
-        <div className="flex-1 lg:max-w-2xl">
+        <div className="flex-1 lg:max-w-2xl" id="experience-cards">
           <Accordion
             variant="light"
             className="px-0 gap-0"
@@ -74,6 +85,10 @@ const Experience: React.FC = () => {
               <AccordionItem
                 key={index}
                 aria-label={`${item.position} at ${item.company}`}
+                className="aos-item"
+                data-aos="fade-left" 
+                data-aos-anchor="#experience-cards"
+                data-aos-delay={index * 100}
                 title={
                   <div className="flex items-center justify-between gap-4 w-full">
                     {/* Left: Company Logo + Position & Company */}
