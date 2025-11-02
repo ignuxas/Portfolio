@@ -98,12 +98,33 @@ const CardNav: React.FC<CardNavProps> = ({
 
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     if (isMobile) {
-      // On mobile, return viewport height minus some margin, but ensure it doesn't go off-screen
+      // On mobile, calculate the actual content height
+      const topSection = 60; // Height of the top bar
+      const padding = 16; // 2 * 0.5rem (p-2 = 8px top + 8px bottom)
+      const gap = 8; // gap-2 = 0.5rem = 8px between cards
+      
+      // Calculate total height of all cards plus gaps
+      let contentHeight = 0;
+      cardsRef.current.forEach((card, index) => {
+        if (card) {
+          // Get the natural height of each card
+          const cardHeight = card.scrollHeight;
+          contentHeight += cardHeight;
+          if (index < cardsRef.current.length - 1) {
+            contentHeight += gap;
+          }
+        }
+      });
+      
+      const totalHeight = topSection + padding + contentHeight;
+      
+      // Add a maximum constraint to prevent overflow on very small screens
       const viewportHeight = window.innerHeight;
       const topPosition = 20; // top-[1.2em] is roughly 20px
-      const bottomMargin = 10; // small margin at bottom
+      const bottomMargin = 20; // small margin at bottom
       const maxHeight = viewportHeight - topPosition - bottomMargin;
-      return Math.min(maxHeight, viewportHeight - 30);
+      
+      return Math.min(totalHeight, maxHeight);
     }
     return 260;
   };

@@ -68,12 +68,49 @@ const About: React.FC = () => {
 
             <p data-aos="fade-up" data-aos-delay="200">
               I've had the pleasure of working on some noteworthy projects, including{' '}
-              <span className="text-white font-medium">Fuel Map</span> which is a gas station map providing 
-              real-time prices. There's also <span className="text-white font-medium">Project Green</span>, an 
+              <a 
+                href="#featured" 
+                className="text-white font-medium hover:text-cyan-500 transition-colors duration-300 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Fuel Map
+              </a> which is a gas station map providing 
+              real-time prices. There's also{' '}
+              <a 
+                href="#featured" 
+                className="text-white font-medium hover:text-cyan-500 transition-colors duration-300 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Project Green
+              </a>, an 
               app designed to showcase the latest listings from specific websites. Plus, I crafted{' '}
-              <span className="text-white font-medium">Armilla</span>, a fully functional online store prototype. 
+              <a 
+                href="#featured" 
+                className="text-white font-medium hover:text-cyan-500 transition-colors duration-300 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Armilla
+              </a>, a fully functional online store prototype. 
               I also have cyber-security experience and hold a prestigious placement on the{' '}
-              <span className="text-cyan-500 font-medium">Google Bug Bounty Honorable Mentions List</span>.
+              <a 
+                href="#achievements" 
+                className="text-cyan-500 font-medium hover:text-cyan-400 transition-colors duration-300 cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('achievements')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Google Bug Bounty Honorable Mentions List
+              </a>.
             </p>
 
             <p data-aos="fade-up" data-aos-delay="300">
