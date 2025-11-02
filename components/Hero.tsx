@@ -24,12 +24,18 @@ export default function Hero() {
 
       {/* CTA Buttons */}
       <div className="flex flex-col gap-4 sm:flex-row">
-        <button className="flex h-14 items-center justify-center rounded-full bg-white px-10 text-base font-semibold text-black transition-all hover:bg-zinc-200 hover:scale-105">
-          Get Started
-        </button>
-        <button className="flex h-14 items-center justify-center rounded-full border border-zinc-700 bg-transparent px-10 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105">
-          Learn More
-        </button>
+        <a 
+          href="#featured"
+          className="flex h-14 items-center justify-center rounded-full bg-white px-10 text-base font-semibold text-black transition-all hover:bg-zinc-200 hover:scale-105"
+        >
+          View Projects
+        </a>
+        <a 
+          href="#contact"
+          className="flex h-14 items-center justify-center rounded-full border border-zinc-700 bg-transparent px-10 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105"
+        >
+          Contact Me
+        </a>
       </div>
     </main>
   );

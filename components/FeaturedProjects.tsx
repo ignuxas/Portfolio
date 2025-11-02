@@ -93,19 +93,40 @@ export default function FeaturedProjects() {
         }
 
         @media screen and (max-width: 768px) {
-          .multi-button a {
-            position: relative !important;
-            left: 0 !important;
-            top: 20% !important;
+          .card {
+            overflow: visible !important;
           }
           
           .multi-button {
+            position: absolute !important;
+            top: -10px !important;
+            left: 50% !important;
+            transform: translateX(20px) !important;
+            width: auto !important;
+            height: auto !important;
             display: flex !important;
             flex-direction: row !important;
             justify-content: center !important;
+            align-items: center !important;
+            gap: 0 !important;
+            opacity: 0 !important;
+            transition: all 250ms ease !important;
+            pointer-events: none !important;
+          }
+          
+          .card:hover .multi-button {
+            opacity: 1 !important;
             gap: 20px !important;
-            left: 55% !important;
-            transform: translate(-50%, -50%) !important;
+            pointer-events: auto !important;
+          }
+          
+          .multi-button a {
+            position: relative !important;
+            left: 0 !important;
+            top: 0 !important;
+            transform: none !important;
+            width: 40px !important;
+            height: 40px !important;
           }
         }
       `}</style>
@@ -315,7 +336,7 @@ export default function FeaturedProjects() {
                   <Image
                     src={project.image}
                     alt={project.title}
-                    className="absolute z-2 top-0 left-1/2 opacity-5 max-h-full -translate-x-1/2 object-cover"
+                    className="absolute z-2 top-0 left-0 w-full h-full opacity-5 object-cover"
                   />
                 </div>
               )}

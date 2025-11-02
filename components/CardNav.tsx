@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { Button } from '@heroui/react';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight } from 'react-icons/go';
+import { FaYoutube, FaLinkedin, FaGithub, FaFacebook, FaEnvelope, FaGlobe } from 'react-icons/fa';
 import SplitText from './SplitText';
 
 type CardNavLink = {
@@ -59,37 +60,50 @@ const CardNav: React.FC<CardNavProps> = ({
     tl.reverse();
   };
 
+  const getLinkIcon = (href: string, label: string) => {
+    const lowerHref = href.toLowerCase();
+    const lowerLabel = label.toLowerCase();
+    
+    // Check for Website
+    if (lowerLabel.includes('website')) {
+      return <FaGlobe className="nav-card-link-icon shrink-0 text-[18px]" aria-hidden="true" />;
+    }
+    // Check for YouTube
+    if (lowerHref.includes('youtube') || lowerLabel.includes('youtube')) {
+      return <FaYoutube className="nav-card-link-icon shrink-0 text-[18px]" aria-hidden="true" />;
+    }
+    // Check for LinkedIn
+    if (lowerHref.includes('linkedin') || lowerLabel.includes('linkedin')) {
+      return <FaLinkedin className="nav-card-link-icon shrink-0 text-[18px]" aria-hidden="true" />;
+    }
+    // Check for GitHub
+    if (lowerHref.includes('github') || lowerLabel.includes('github')) {
+      return <FaGithub className="nav-card-link-icon shrink-0 text-[18px]" aria-hidden="true" />;
+    }
+    // Check for Facebook
+    if (lowerHref.includes('facebook') || lowerLabel.includes('facebook')) {
+      return <FaFacebook className="nav-card-link-icon shrink-0 text-[18px]" aria-hidden="true" />;
+    }
+    // Check for Email
+    if (lowerHref.startsWith('mailto:') || lowerLabel.includes('email')) {
+      return <FaEnvelope className="nav-card-link-icon shrink-0 text-[18px]" aria-hidden="true" />;
+    }
+    // Default arrow for internal links or unknown external links
+    return <GoArrowUpRight className="nav-card-link-icon shrink-0 text-[18px]" aria-hidden="true" />;
+  };
+
   const calculateHeight = () => {
     const navEl = navRef.current;
     if (!navEl) return 260;
 
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     if (isMobile) {
-      const contentEl = navEl.querySelector('.card-nav-content') as HTMLElement;
-      if (contentEl) {
-        const wasVisible = contentEl.style.visibility;
-        const wasPointerEvents = contentEl.style.pointerEvents;
-        const wasPosition = contentEl.style.position;
-        const wasHeight = contentEl.style.height;
-
-        contentEl.style.visibility = 'visible';
-        contentEl.style.pointerEvents = 'auto';
-        contentEl.style.position = 'static';
-        contentEl.style.height = 'auto';
-
-        contentEl.offsetHeight;
-
-        const topBar = 60;
-        const padding = 16;
-        const contentHeight = contentEl.scrollHeight;
-
-        contentEl.style.visibility = wasVisible;
-        contentEl.style.pointerEvents = wasPointerEvents;
-        contentEl.style.position = wasPosition;
-        contentEl.style.height = wasHeight;
-
-        return topBar + contentHeight + padding;
-      }
+      // On mobile, return viewport height minus some margin, but ensure it doesn't go off-screen
+      const viewportHeight = window.innerHeight;
+      const topPosition = 20; // top-[1.2em] is roughly 20px
+      const bottomMargin = 10; // small margin at bottom
+      const maxHeight = viewportHeight - topPosition - bottomMargin;
+      return Math.min(maxHeight, viewportHeight - 30);
     }
     return 260;
   };
@@ -293,30 +307,30 @@ const CardNav: React.FC<CardNavProps> = ({
         </div>
 
         <div
-          className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-1 ${
+          className={`card-nav-content absolute left-0 right-0 top-[60px] bottom-0 p-2 flex flex-col items-stretch gap-2 justify-start z-1 overflow-y-auto overflow-x-hidden ${
             isExpanded ? 'visible pointer-events-auto' : 'invisible pointer-events-none'
-          } md:flex-row md:items-end md:gap-3`}
+          } md:flex-row md:items-end md:gap-3 md:justify-start md:overflow-visible`}
         >
           {(items || []).slice(0, 3).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
-              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-[1_1_auto] h-auto min-h-[60px] md:h-full md:min-h-0 md:flex-[1_1_0%]"
+              className="nav-card select-none relative flex flex-col gap-2 p-[12px_16px] rounded-[calc(0.75rem-0.2rem)] min-w-0 flex-1 h-auto md:h-full md:min-h-0 md:flex-[1_1_0%]"
               ref={setCardRef(idx)}
               style={{ backgroundColor: item.bgColor, color: item.textColor } as React.CSSProperties}
             >
               <div className="nav-card-label font-normal tracking-[-0.5px] text-[18px] md:text-[22px]">
                 {item.label}
               </div>
-              <div className="nav-card-links mt-auto flex flex-col gap-0.5">
+              <div className="nav-card-links mt-auto flex flex-col gap-1">
                 {item.links?.map((lnk, i) => (
                   <a
                     key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[15px] md:text-[16px]"
+                    className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[16px] md:text-[16px] py-2 md:py-0 -mx-2 px-2 rounded-md active:bg-white/10"
                     href={lnk.href}
                     aria-label={lnk.ariaLabel}
                     onClick={handleLinkClick}
                   >
-                    <GoArrowUpRight className="nav-card-link-icon shrink-0" aria-hidden="true" />
+                    {getLinkIcon(lnk.href, lnk.label)}
                     {lnk.label}
                   </a>
                 ))}
