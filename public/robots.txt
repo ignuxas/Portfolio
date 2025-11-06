@@ -1,0 +1,124 @@
+# ===========================================
+# UNIVERSAL ACCESS - ALL CRAWLERS WELCOME
+# ===========================================
+# This site welcomes ALL web crawlers, including:
+# - Search engines (Google, Bing, DuckDuckGo, etc.)
+# - AI crawlers (ChatGPT, Claude, Perplexity, etc.)
+# - Research crawlers and bots
+# - Any unknown or future crawlers
+# 
+# No restrictions applied.
+# ===========================================
+
+# Allow ALL crawlers (known and unknown)
+User-agent: *
+Allow: /
+Disallow:
+
+# ===========================================
+# EXPLICIT AI CRAWLER PERMISSIONS
+# ===========================================
+# Explicitly listing major AI crawlers for clarity,
+# but the wildcard (*) above already allows them.
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Common Crawl (used by many AI companies)
+User-agent: CCBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Meta/Facebook
+User-agent: FacebookBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Bytedance
+User-agent: Bytespider
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# Omgili
+User-agent: Omgilibot
+Allow: /
+
+# Traditional Search Engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# ===========================================
+# SITEMAP
+# ===========================================
+Sitemap: https://ignuxas.com/sitemap.xml
+
+# ===========================================
+# CRAWL RATE (Optional - removed for max access)
+# Crawl-delay: 0
+# ===========================================

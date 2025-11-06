@@ -1,0 +1,50 @@
+/* TEAM */
+Developer & Designer: Ignas Mikolaitis
+Contact: contact [at] ignasmikolaitis.com
+Location: Lithuania
+GitHub: https://github.com/ignuxas
+LinkedIn: https://www.linkedin.com/in/ignas-mikolaitis/
+
+/* SITE */
+Last update: 2025/11/06
+Standards: HTML5, CSS3, ES2024
+Components: React, Next.js, TypeScript
+Software: VS Code, Git
+
+/* TECHNOLOGIES */
+Frontend:
+- React 19
+- Next.js 16
+- TypeScript
+- TailwindCSS
+- GSAP (GreenSock)
+- Three.js
+- Framer Motion
+
+Backend & Tools:
+- Node.js
+- Python
+- SQL/NoSQL Databases
+- GraphQL
+- Git Version Control
+
+AI & Machine Learning:
+- PyTorch
+- TensorFlow
+
+/* THANKS */
+- Open Source Community
+- Next.js Team
+- React Team
+- Vercel
+- All contributors to the libraries used
+
+/* SPECIAL NOTES */
+This portfolio is optimized for:
+- Modern browsers
+- Mobile devices
+- Screen readers
+- AI crawlers (GPTBot, Claude, Perplexity, etc.)
+- Search engines (Google, Bing, etc.)
+
+Built with passion for web development and AI engineering.

@@ -1,0 +1,142 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://ignuxas.com/#person",
+      "name": "Ignas Mikolaitis",
+      "givenName": "Ignas",
+      "familyName": "Mikolaitis",
+      "jobTitle": "Full Stack Developer & AI Engineer",
+      "description": "Full-stack developer and AI engineer with expertise in modern web technologies, machine learning, and software development. Specialized in React, Next.js, Python, and AI/ML technologies.",
+      "url": "https://ignuxas.com",
+      "image": "https://ignuxas.com/og-image.png",
+      "sameAs": [
+        "https://github.com/ignuxas",
+        "https://www.linkedin.com/in/ignas-mikolaitis/",
+        "https://www.youtube.com/@ThunderclapLabs",
+        "https://www.facebook.com/ignuxas/"
+      ],
+      "knowsAbout": [
+        {
+          "@type": "Thing",
+          "name": "React",
+          "description": "JavaScript library for building user interfaces"
+        },
+        {
+          "@type": "Thing",
+          "name": "Next.js",
+          "description": "React framework for production"
+        },
+        {
+          "@type": "Thing",
+          "name": "Python",
+          "description": "Programming language for web development and AI"
+        },
+        {
+          "@type": "Thing",
+          "name": "JavaScript",
+          "description": "Programming language for web development"
+        },
+        {
+          "@type": "Thing",
+          "name": "TypeScript",
+          "description": "Typed superset of JavaScript"
+        },
+        {
+          "@type": "Thing",
+          "name": "Machine Learning",
+          "description": "Artificial intelligence and ML technologies"
+        },
+        {
+          "@type": "Thing",
+          "name": "Web Development",
+          "description": "Full-stack web application development"
+        },
+        {
+          "@type": "Thing",
+          "name": "Node.js",
+          "description": "JavaScript runtime for server-side development"
+        },
+        {
+          "@type": "Thing",
+          "name": "Vue.js",
+          "description": "Progressive JavaScript framework"
+        },
+        {
+          "@type": "Thing",
+          "name": "SQL",
+          "description": "Relational database management"
+        },
+        {
+          "@type": "Thing",
+          "name": "MongoDB",
+          "description": "NoSQL database"
+        },
+        {
+          "@type": "Thing",
+          "name": "PyTorch",
+          "description": "Machine learning framework"
+        },
+        {
+          "@type": "Thing",
+          "name": "TensorFlow",
+          "description": "Machine learning platform"
+        }
+      ],
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "English"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ignuxas.com/#website",
+      "url": "https://ignuxas.com",
+      "name": "Ignas Mikolaitis Portfolio",
+      "description": "Portfolio website showcasing projects, experience, and skills of Ignas Mikolaitis - Full Stack Developer & AI Engineer",
+      "publisher": {
+        "@id": "https://ignuxas.com/#person"
+      },
+      "inLanguage": "en-US",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ignuxas.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://ignuxas.com/#webpage",
+      "url": "https://ignuxas.com",
+      "name": "Ignas Mikolaitis - Full Stack Developer & AI Engineer",
+      "description": "Full-stack developer and AI engineer specializing in React, Next.js, Python, and machine learning. Explore portfolio showcasing innovative web applications and AI projects.",
+      "isPartOf": {
+        "@id": "https://ignuxas.com/#website"
+      },
+      "about": {
+        "@id": "https://ignuxas.com/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://ignuxas.com/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://ignuxas.com/#profilepage",
+      "url": "https://ignuxas.com",
+      "name": "Ignas Mikolaitis - Professional Profile",
+      "description": "Professional profile and portfolio of Ignas Mikolaitis",
+      "mainEntity": {
+        "@id": "https://ignuxas.com/#person"
+      },
+      "inLanguage": "en-US"
+    }
+  ]
+}

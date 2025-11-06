@@ -30,6 +30,14 @@ export default function Home() {
 
   return (
     <div className="relative bg-black font-sans">
+      {/* Skip to main content for accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:bg-cyan-500 focus:text-black focus:px-4 focus:py-2 focus:rounded"
+      >
+        Skip to main content
+      </a>
+
       {/* Navigation */}
       <Navigation />
 
@@ -45,17 +53,20 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-b from-transparent to-black pointer-events-none z-20" />
       </div>
 
-      {/* About Section */}
-      <About />
+      {/* Main Content */}
+      <main id="main-content">
+        {/* About Section */}
+        <About />
 
-      {/* Experience Section - separate from Hero */}
-      <Experience />
+        {/* Experience Section - separate from Hero */}
+        <Experience />
 
-      {/* Featured Projects Section */}
-      <FeaturedProjects />
-      
-      {/* Achievements Section */}
-      <Achievements />
+        {/* Featured Projects Section */}
+        <FeaturedProjects />
+        
+        {/* Achievements Section */}
+        <Achievements />
+      </main>
 
       {/* Footer */}
       <Footer />

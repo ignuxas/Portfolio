@@ -1,0 +1,40 @@
+{
+  "name": "Ignas Mikolaitis Portfolio",
+  "short_name": "Ignas M.",
+  "description": "Full-stack developer and AI engineer specializing in React, Next.js, Python, and machine learning. Portfolio showcasing innovative web applications and AI projects.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#06b6d4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": [
+    "portfolio",
+    "developer",
+    "technology",
+    "software"
+  ],
+  "shortcuts": [
+    {
+      "name": "About Me",
+      "url": "/#about",
+      "description": "Learn more about Ignas Mikolaitis"
+    },
+    {
+      "name": "Projects",
+      "url": "/#projects",
+      "description": "View featured projects and work"
+    },
+    {
+      "name": "Experience",
+      "url": "/#experience",
+      "description": "Professional experience and skills"
+    }
+  ]
+}

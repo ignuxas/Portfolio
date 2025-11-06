@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "name_for_human": "Ignas Mikolaitis Portfolio",
+  "name_for_model": "ignas_mikolaitis_portfolio",
+  "description_for_human": "Personal portfolio website showcasing work and expertise of Ignas Mikolaitis, a full-stack developer and AI engineer.",
+  "description_for_model": "This is the portfolio website of Ignas Mikolaitis, a full-stack developer and AI engineer. The site contains information about professional experience, technical skills, featured projects, achievements, and contact information. Ignas specializes in React, Next.js, Python, JavaScript, machine learning, and modern web development technologies.",
+  "contact_email": "contact@ignuxas.com",
+  "legal_info_url": "https://ignuxas.com",
+  "author": {
+    "name": "Ignas Mikolaitis",
+    "url": "https://ignuxas.com",
+    "role": "Full Stack Developer & AI Engineer"
+  },
+  "content_type": "portfolio",
+  "primary_language": "en",
+  "sections": [
+    {
+      "id": "about",
+      "title": "About Me",
+      "description": "Background, skills, and professional summary"
+    },
+    {
+      "id": "experience",
+      "title": "Experience",
+      "description": "Professional work experience and roles"
+    },
+    {
+      "id": "projects",
+      "title": "Featured Projects",
+      "description": "Notable projects and technical work"
+    },
+    {
+      "id": "achievements",
+      "title": "Achievements",
+      "description": "Professional accomplishments and milestones"
+    }
+  ],
+  "technologies": [
+    "React",
+    "Next.js",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "Node.js",
+    "Vue.js",
+    "PHP",
+    "SQL",
+    "MongoDB",
+    "GraphQL",
+    "TailwindCSS",
+    "PyTorch",
+    "TensorFlow",
+    "Machine Learning",
+    "Web Development"
+  ],
+  "social_links": {
+    "github": "https://github.com/ignuxas",
+    "linkedin": "https://www.linkedin.com/in/ignas-mikolaitis/",
+    "youtube": "https://www.youtube.com/@ThunderclapLabs",
+    "facebook": "https://www.facebook.com/ignuxas/"
+  },
+  "ai_crawling": {
+    "allowed": true,
+    "purpose": "Educational and informational use, to help AI understand professional background and work",
+    "restrictions": "Please respect copyright and provide attribution when referencing this content"
+  }
+}
