@@ -26,13 +26,21 @@ export default function Hero() {
       <div className="flex flex-col gap-4 sm:flex-row">
         <a 
           href="#featured"
-          className="flex h-14 items-center justify-center rounded-full bg-white px-10 text-base font-semibold text-black transition-all hover:bg-zinc-200 hover:scale-105"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="flex h-14 items-center justify-center rounded-full bg-white px-10 text-base font-semibold text-black transition-all hover:bg-zinc-200 hover:scale-105 cursor-pointer"
         >
           View Projects
         </a>
         <a 
           href="#contact"
-          className="flex h-14 items-center justify-center rounded-full border border-zinc-700 bg-transparent px-10 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="flex h-14 items-center justify-center rounded-full border border-zinc-700 bg-transparent px-10 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:scale-105 cursor-pointer"
         >
           Contact Me
         </a>

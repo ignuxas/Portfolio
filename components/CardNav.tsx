@@ -291,7 +291,7 @@ const CardNav: React.FC<CardNavProps> = ({
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="logo-wrapper hidden md:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:opacity-80"
+            className="logo-wrapper hidden md:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:opacity-80 transition-opacity duration-300"
           >
             <img src={logo} alt={logoAlt} className="logo h-12" />
             {logoText && (
@@ -306,7 +306,7 @@ const CardNav: React.FC<CardNavProps> = ({
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="logo-container flex md:hidden items-center order-1 cursor-pointer hover:opacity-80"
+            className="logo-container flex md:hidden items-center order-1 cursor-pointer hover:opacity-80 transition-opacity duration-300"
           >
             <img src={logo} alt={logoAlt} className="logo h-12" />
             {logoText && (
@@ -343,18 +343,22 @@ const CardNav: React.FC<CardNavProps> = ({
                 {item.label}
               </div>
               <div className="nav-card-links mt-auto flex flex-col gap-1">
-                {item.links?.map((lnk, i) => (
-                  <a
-                    key={`${lnk.label}-${i}`}
-                    className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[16px] md:text-[16px] py-2 md:py-0 -mx-2 px-2 rounded-md active:bg-white/10"
-                    href={lnk.href}
-                    aria-label={lnk.ariaLabel}
-                    onClick={handleLinkClick}
-                  >
-                    {getLinkIcon(lnk.href, lnk.label)}
-                    {lnk.label}
-                  </a>
-                ))}
+                {item.links?.map((lnk, i) => {
+                  const isExternalLink = lnk.href.startsWith('http') || lnk.href.startsWith('mailto');
+                  return (
+                    <a
+                      key={`${lnk.label}-${i}`}
+                      className="nav-card-link inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-[16px] md:text-[16px] py-2 md:py-0 -mx-2 px-2 rounded-md active:bg-white/10"
+                      href={lnk.href}
+                      aria-label={lnk.ariaLabel}
+                      onClick={handleLinkClick}
+                      {...(isExternalLink && { target: '_blank', rel: 'noopener noreferrer' })}
+                    >
+                      {getLinkIcon(lnk.href, lnk.label)}
+                      {lnk.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           ))}

@@ -59,7 +59,7 @@ export default function Footer({ variant = 'default' }: FooterProps) {
   }
 
   return (
-    <footer className="relative w-full bg-black py-24 px-8 pb-8">
+    <footer id="contact" className="relative w-full bg-black py-24 px-8 pb-8">
       <div className="mx-auto max-w-6xl">
         {/* Main Footer Content */}
         <div className="flex flex-col items-center justify-center text-center">
