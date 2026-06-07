@@ -3,6 +3,7 @@ import edullectus from '@/public/project_images/edullectus.png';
 import armilla from '@/public/project_images/Armilla.png';
 import lawcare from '@/public/project_images/lawcare.png';
 import thunderclap from '@/public/project_images/tclwebb.png';
+import thundereye from '@/public/project_images/tcltrack.gif';
 import nukesnshit from '@/public/project_images/nukesnshit.png';
 import cansat from '@/public/project_images/cansat.jpg';
 import fridge from '@/public/project_images/Fridge.jpg';
@@ -37,6 +38,33 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+    {
+        title: 'Thunderclap Labs',
+        subTitle: "Web development",
+        date: "2024 - Present",
+        description: "Co-founded Thunderclap labs, Thunderclap Labs is at the forefront of innovation, developing critical technologies to solve complex global challenges. We build the platforms and systems that will define the next era of atmospheric management, aerospace capability, and beyond - Pioneering the next era of aerospace with a focus on rocket propulsion technologies, advanced launch systems, and sustainable aerospace solutions.",
+        image: thunderclap,
+        tags: ["AI (LLM - Gemini)", "Next", "PostgreSQL", "Tailwind", 'Python'],
+        mainLink: 'https://thunderclaplabs.com/',
+        links: {
+            website: 'https://thunderclaplabs.com/',
+            github: 'https://github.com/Thunderclap-Labs/website'
+        },
+        featured: true
+    },
+    {
+        title: 'ThunderEye',
+        subTitle: "Computer Vision / Defense Tech",
+        date: "2025 - Present",
+        description: "A compact, intelligent aerial detection platform that turns raw video into real aerial intelligence in real time. Using an array of synchronized cameras and stereo vision, ThunderEye detects moving aerial objects and reconstructs their position in 3D space — giving operators altitude, bearing, and distance, not just a pixel coordinate. Rather than relying solely on visual appearance, the system classifies objects by analyzing trajectory data over time: speed profiles, path consistency, hovering behavior, and flight envelope characteristics. Developed in partnership with the Lithuanian Riflemen's Union for counter-UAS scenarios.",
+        image: thundereye,
+        tags: ["C++", "Computer Vision", "Stereo Vision", "AI", "Edge Computing", "Defense"],
+        mainLink: 'https://thunderclaplabs.com/projects/thundereye',
+        links: {
+            website: 'https://thunderclaplabs.com/projects/thundereye',
+        },
+        featured: true
+    },
     {
         title: 'Edullectus',
         subTitle: "Web Development / AI",
@@ -74,20 +102,6 @@ export const projects: Project[] = [
         mainLink: 'https://lawcare.netlify.app',
         links: {
             website: 'https://lawcare.netlify.app'
-        },
-        featured: true
-    },
-    {
-        title: 'Thunderclap Labs',
-        subTitle: "Web development",
-        date: "2024 - Present",
-        description: "Co-founded Thunderclap labs, Thunderclap Labs is at the forefront of innovation, developing critical technologies to solve complex global challenges. We build the platforms and systems that will define the next era of atmospheric management, aerospace capability, and beyond - Pioneering the next era of aerospace with a focus on rocket propulsion technologies, advanced launch systems, and sustainable aerospace solutions.",
-        image: thunderclap,
-        tags: ["AI (LLM - Gemini)", "Next", "PostgreSQL", "Tailwind", 'Python'],
-        mainLink: 'https://thunderclaplabs.com/',
-        links: {
-            website: 'https://thunderclaplabs.com/',
-            github: 'https://github.com/Thunderclap-Labs/website'
         },
         featured: true
     },

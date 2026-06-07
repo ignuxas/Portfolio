@@ -307,7 +307,7 @@ export default function LiquidEther({
         this.manager = manager;
         this.enabled = opts.enabled;
         this.speed = opts.speed;
-        this.resumeDelay = opts.resumeDelay || 3000;
+        this.resumeDelay = opts.resumeDelay ?? 3000;
         this.rampDurationMs = (opts.rampDuration || 0) * 1000;
         this.pickNewTarget();
       }
@@ -1037,6 +1037,7 @@ export default function LiquidEther({
       }
       start() {
         if (this.running) return;
+        if (Common.clock) Common.clock.getDelta();
         this.running = true;
         this._loop();
       }

@@ -20,7 +20,7 @@ export default function Background() {
         autoSpeed={0.5}
         autoIntensity={2.2}
         takeoverDuration={0.25}
-        autoResumeDelay={3000}
+        autoResumeDelay={500}
         autoRampDuration={0.6}
       />
     </div>

@@ -9,7 +9,7 @@ import ShinyText from './ShinyText';
 import SplitText from './SplitText';
 import AOS from 'aos';
 
-const FEATURED_PROJECT_COUNT = 4;
+const FEATURED_PROJECT_COUNT = 5;
 const OTHER_PROJECTS_INITIAL = 6;
 
 export default function FeaturedProjects() {

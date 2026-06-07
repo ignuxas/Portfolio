@@ -10,6 +10,21 @@ export interface AchievementItem {
 
 export const achievements: AchievementItem[] = [
   {
+    title: 'KTU Technorama 2026 - Best AI App & Grand Prize',
+    category: 'Competition',
+    description: 'Presented ThunderEye at KTU Technorama 2026 and won two top awards: the SustAInLivWork Best AI Application award and the event\'s Grand Prize.',
+    details: [
+      'Presented ThunderEye — a passive drone and bird detection system — at Santaka Valley',
+      'Received the SustAInLivWork Best AI Application award from the Centre of Excellence of AI for Sustainable Living and Working',
+      'Called back on stage to accept the event\'s Grand Prize',
+      'Left with a calendar full of scheduled meetings and concrete follow-ups with partners',
+      '<a href="https://www.linkedin.com/feed/update/urn:li:activity:7466749861841756162" class="text-blue-400 hover:text-blue-300 transition-colors" target="_blank">View announcement →</a>',
+    ],
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7466749861841756162',
+    date: '2026',
+    icon: 'emoji_events',
+  },
+  {
     title: 'NASA Space Apps Challenge - Official Global Nominee',
     category: 'Competition',
     description: 'Developed an innovative solution for space exploration and achieved recognition as an Official Global Nominee in the prestigious NASA Space Apps Challenge.',
