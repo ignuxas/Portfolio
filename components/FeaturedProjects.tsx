@@ -130,7 +130,7 @@ export default function FeaturedProjects() {
           }
         }
       `}</style>
-      <div className="relative z-10 w-full bg-black py-24">
+      <div id="projects" className="relative z-10 w-full bg-black py-24">
         {/* Featured Projects Section */}
         <section id="featured" className="max-w-7xl mx-auto px-6 mb-24">
         <div data-aos="fade-right">

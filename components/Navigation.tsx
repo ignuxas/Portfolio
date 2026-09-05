@@ -1,12 +1,12 @@
 'use client';
 
 import signature from "../public/signature.png";
-import React from 'react';
+import React, { useMemo } from 'react';
 import CardNav from '@/components/CardNav';
 import type { CardNavItem } from '@/components/CardNav';
 
 export default function Navigation() {
-  const navItems: CardNavItem[] = [
+  const navItems: CardNavItem[] = useMemo(() => [
     {
       label: "Page",
       bgColor: "#0D0716",
@@ -39,7 +39,7 @@ export default function Navigation() {
         { label: "Facebook", href: "https://www.facebook.com/ignuxas/", ariaLabel: "My Facebook" }
       ]
     }
-  ];
+  ], []);
 
   return (
     <CardNav
